@@ -73,8 +73,7 @@ class LinkField extends TextField
 
         if (!$this->isFrontend) {
             $action
-                ->addExtraClass('ss-ui-action-constructive')
-                ->setAttribute('data-icon', 'accept');
+                ->addExtraClass('btn-outline-secondary font-icon-tick');
         }
 
         $link = null;
@@ -90,8 +89,11 @@ class LinkField extends TextField
 
         $title = $link ? _t('Linkable.EDITLINK', 'Edit Link') : _t('Linkable.ADDLINK', 'Add Link');
         $fields->insertBefore(
-            _t('Linkable.TITLE', 'Title'), HeaderField::create('LinkHeader', $title)
+            _t('Linkable.TITLE', 'Title'), 
+            HeaderField::create('LinkHeader', $title)->addExtraClass('editor__heading')
         );
+
+
 
         $actions = FieldList::create($action);
         $form = Form::create($this, 'LinkForm', $fields, $actions);
